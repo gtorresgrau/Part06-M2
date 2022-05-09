@@ -60,6 +60,7 @@ toDoShell.className = 'toDoShell';
 const toDoText = document.createElement('span')
 toDoText.innerHTML = ToDo.description;
 toDoText.id = index;
+toDoText.onclick = completeToDo;
 toDoText.className = ToDo.complete ? 'completeText' :'';
 toDoShell.appendChild(toDoText);
 return toDoShell;
@@ -137,9 +138,10 @@ addButton.addEventListener('click', function(){addToDo});
 
 function completeToDo(event) {
   // DESCOMENTAR LA SIGUIENTE LINEA
-  // const index = event.target.id;
+  const index = event.target.id;
   // Tu código acá:
-
+toDoItems[index].completeToDo();
+displayToDos();
 }
 
 // Una vez que llegaste a este punto verificá que todos los tests pasen
