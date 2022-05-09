@@ -29,8 +29,8 @@ function ToDo (description) {
 // Debe setear el atributo 'complete' del ToDo en true
 
 // Tu código acá:
-ToDo.prototype.completeToDo = function(){
-  this.complete = True;
+ToDo.prototype.completeToDo = function() {
+  this.complete = true;
 }
 
 
@@ -72,7 +72,7 @@ return toDoShell;
 
 function buildToDos(toDos) {
   // Tu código acá:
-
+return toDos.map(buildToDo);
 }
 
 
@@ -87,6 +87,11 @@ function buildToDos(toDos) {
 
 function displayToDos() {
   // Tu código acá:
+const toDoContainer = document.querySelector('#toDoContainer');
+toDoContainer.innerHTML = "";
+buildToDos(toDoItems).forEach(element => {
+  toDoContainer.appendChild(element)
+});
 
 }
 
@@ -102,7 +107,11 @@ function displayToDos() {
 
 function addToDo() {
   // Tu código acá:
-
+  const toDoInput = document.querySelector('#toDoInput');
+  const add = new ToDo(toDoInput.value);
+  toDoItems.push(add)
+  toDoInput.value = "";
+  displayToDos();
 }
 
 // Agregar un 'Event Listener' para que cada vez que el botón 'AGREGAR' sea clickeado
@@ -112,6 +121,7 @@ function addToDo() {
 
 // Tu código acá:
 
+addButton.addEventListener('click', function(){addToDo});
 
 // La función completeToDo se va a ejecutar cuando queramos completar un todo
 // [NOTA: Algunas cuestiones a tener en cuenta
@@ -149,7 +159,7 @@ function completeToDo(event) {
 
 
 // Acá debes insertar la llamada a 'displayToDos'
-
+displayToDos();
 
 // ---------------------------- NO CAMBIES NADA DE ACÁ PARA ABAJO ----------------------------- //
 if (typeof module !== 'undefined') {
