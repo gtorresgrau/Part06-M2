@@ -17,9 +17,10 @@ document.querySelector('#createdBy').innerHTML += ' Gonzalo'
 // 2) 'complete'    : debe setearse en false
 // Ayuda: usar 'this' en el constructor
 
-function ToDo () {
+function ToDo (description) {
   // Tu código acá:
-
+    this.description = description;
+    this.complete = false;
 }
 
 
@@ -28,6 +29,9 @@ function ToDo () {
 // Debe setear el atributo 'complete' del ToDo en true
 
 // Tu código acá:
+ToDo.prototype.completeToDo = function(){
+  this.complete = True;
+}
 
 
 
@@ -51,7 +55,14 @@ function ToDo () {
 
 function buildToDo(todo, index) {
   // Tu código acá:
-
+const toDoShell = document.createElement('Div');
+toDoShell.className = 'toDoShell';
+const toDoText = document.createElement('span')
+toDoText.innerHTML = ToDo.description;
+toDoText.id = index;
+toDoText.className = ToDo.complete ? 'completeText' :'';
+toDoShell.appendChild(toDoText);
+return toDoShell;
 }
 
 // La función 'buildToDos' debe crear un array de objetos toDo y devolverlo
